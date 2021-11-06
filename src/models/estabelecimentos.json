@@ -2,6 +2,7 @@
     {
         "id": 1,
         "likes":1,
+        "deslikes":0,
         "nome": "Papyrus papelaria",
         "categoria":"materiais escolares",
         "endereço": "Avenida Moisés Lupion",
@@ -10,12 +11,12 @@
         "cidade": "Bituruna",
         "telefone": "(42) 35531539",
         "pagamento": ["Dinheiro", "cartão", "pix"], 
-        "horário de atendimento": "Segunda a sexta 13:15 as 17:30 e sábado 9:00 as 12:00",
         "delivery": false
     },
     {
-        "id": 1,
+        "id": 2,
         "likes":1,
+        "deslikes":0,
         "nome": "Yandê cosméticos",
         "categoria":"higiene pessoal",
         "endereço": "Avenida Moisés Lupion",
@@ -24,7 +25,21 @@
         "cidade": "Bituruna",
         "telefone": "(42) 35531539",
         "pagamento": ["Dinheiro", "cartão", "pix"], 
-        "horário de atendimento": "Segunda a sexta 08:00 as 17:30 ",
         "delivery": true
+    },
+    { 
+      "id": 3,
+     "likes":1,
+     "deslikes":0,
+     "nome": "Oficina do Paulão",
+     "categoria":"servicos",
+     "endereço": "Avenida Moisés Lupion",
+     "numero": 499,
+     "bairro": "centro",
+     "cidade": "Bituruna",
+     "telefone": "(42) 355315347",
+     "pagamento": ["Dinheiro", "cartão", "pix"], 
+     "delivery": false
+        
     }
 ]

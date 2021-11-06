@@ -24,7 +24,7 @@ const getAll =(require, response) =>{
     }
     //ternarios
     //filtro por delivery
-    if(delicery){
+    if(delivery){
         filtrados = filtrados.filter(estabelecimento =>{
             return estabelecimento.delivery == (delivery == "true" ? true:false)
         })
@@ -42,30 +42,61 @@ const getId = (require, response) => {
      }
      response.status(200).send(found)
 }
-const createEst =(request, response)=>{
+const cadastrar =(request, response)=>{
     let body = request.body
 
     let novoEstabelecimento = {
-        id:(estabelecimento.length)+1,
+        id:(models.length)+1,
+        likes: body.likes,//vai receber a informação que usa em body e usar em like
         nome: body.nome,
-        Plot:body.Plot
+        Plot:body.Plot,
+        categoria: body.categoria,
+        numero: body.numero,
+        bairro: body.bairro,
+        cidade:body.cidade,
+        telefone:body.telefone,
+        pagamento:body.pagamento,
+        delivery:body.delivery
     }
 
-    estabelecimento.push(novoEstabelecimento)
+    models.push(novoEstabelecimento)
 
     response.status(201).json(
         [
             {
                 "mensagem":"Estabelecimento cadastrado com sucesso.",
                 novoEstabelecimento
-            }
+            },
         ]
     )
 }
 
 
+const like = (require, response) =>{
+    const id = require.params.id// mesma coisa que se estivesse escrevendo com .id no final, neste caso coloca na frente para ficar mais curto
+
+    const found = models.find(estabelecimento => estabelecimento.id == id)
+    if(found == undefined){
+        response.status(404).send({message: "Estabelecimento não encontrado"})
+    }
+    found.likes += 1
+    response.status(200).send(found)
+}
+const deslike = (require, response) =>{
+    const id = require.params.id// mesma coisa que se estivesse escrevendo com .id no final, neste caso coloca na frente para ficar mais curto
+
+    const found = models.find(estabelecimento => estabelecimento.id == id)
+    if(found == undefined){
+        response.status(404).send({message: "Estabelecimento não encontrado"})
+    }
+    found.deslikes += 1
+    response.status(200).send(found)
+}
+
 module.exports = {
     getAll,
     getId,
-    createEst
+    cadastrar,
+    like,
+    deslike
 }
